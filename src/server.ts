@@ -13,6 +13,6 @@ async function bootstrap() {
     } catch (error) {
         console.log('faild to connect database', error)
     }
-};
+}
 
 bootstrap()
