@@ -1,9 +1,27 @@
-import { Schema } from 'mongoose'
-import IUser from './users.interface'
+import { Model, Schema, model } from 'mongoose'
+import { IUser } from './users.interface'
+type UserModel = Model<IUser, object>
 
 // 2. Create a Schema corresponding to the document interface.
-const User = new Schema<IUser>({
-  id: {},
-})
+const userSchema = new Schema<IUser>(
+  {
+    id: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    role: {
+      type: String,
+      required: true,
+    },
+    password: {
+      type: String,
+      required: true,
+    },
+  },
+  {
+    timestamps: true,
+  }
+)
 
-export default User
+export const User = model<IUser, UserModel>('User', userSchema)

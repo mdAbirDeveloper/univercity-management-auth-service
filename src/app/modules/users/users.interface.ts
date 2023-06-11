@@ -4,5 +4,3 @@ export type IUser = {
   role: string
   password: string
 }
-
-export default IUser
