@@ -1,25 +1,31 @@
-import winston = require('winston')
+import { createLogger, format, transports } from 'winston'
 import path from 'path'
+const { combine, timestamp, label, printf } = format
 
-const logger = winston.createLogger({
+//Custom log format
+const myFormat = printf(({ level, message, label, timestamp }) => {
+  return `${timestamp} [${label}] ${level}: ${message}`
+})
+
+const logger = createLogger({
   level: 'info',
-  format: winston.format.json(),
+  format: combine(label({ label: 'right meow!' }), timestamp(), myFormat),
   defaultMeta: { service: 'user-service' },
   transports: [
-    new winston.transports.Console(),
-    new winston.transports.File({
+    new transports.Console(),
+    new transports.File({
       filename: path.join(process.cwd(), 'logs', 'winston', 'success.log'),
       level: 'info',
     }),
   ],
 })
-const errorlogger = winston.createLogger({
+const errorlogger = createLogger({
   level: 'error',
-  format: winston.format.json(),
+  format: combine(label({ label: 'right meow!' }), timestamp(), myFormat),
   defaultMeta: { service: 'user-service' },
   transports: [
-    new winston.transports.Console(),
-    new winston.transports.File({
+    new transports.Console(),
+    new transports.File({
       filename: path.join(process.cwd(), 'logs', 'winston', 'error.log'),
       level: 'error',
     }),
