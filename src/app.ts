@@ -1,7 +1,7 @@
 import express, { Application, Request, Response } from 'express'
 import cors from 'cors'
 import globalErrorHandler from './app/middlewares/globalErrorHandler'
-import router from './app/modules/users/users.route'
+import router from './app/modules/users/user.route'
 
 const app: Application = express()
 const port = 5000

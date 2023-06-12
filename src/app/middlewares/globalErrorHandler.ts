@@ -1,16 +1,10 @@
-import { Request, Response } from 'express'
+import { ErrorRequestHandler } from 'express'
 import { IGenericErrorMessage } from '../../interfaces/error'
 import handleValidationError from '../../errors/handleValidationError'
 import config from '../../config'
-// import { error } from 'winston'
 import ApiError from '../../errors/ApiError'
 
-const globalErrorHandler = (
-  error: string, //it should be 'any', i have write it 'string' just for push code on github
-  req: Request,
-  res: Response
-  // next: NextFunction
-) => {
+const globalErrorHandler: ErrorRequestHandler = (error, req, res) => {
   let stasusCode = 500
   let message = 'sumething went wrong'
   let errorMessage: IGenericErrorMessage[] = []
