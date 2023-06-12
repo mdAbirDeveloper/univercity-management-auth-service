@@ -1,11 +1,16 @@
 import { ErrorRequestHandler } from 'express'
 import { IGenericErrorMessage } from '../../interfaces/error'
-import handleValidationError from '../../errors/handleValidationError'
 import config from '../../config'
 import ApiError from '../../errors/ApiError'
+import handleValidationError from '../../errors/handleValidationError'
+import { errorlogger } from '../../shared/logger'
 
-const globalErrorHandler: ErrorRequestHandler = (error, req, res) => {
-  let stasusCode = 500
+const globalErrorHandler: ErrorRequestHandler = (error, req, res, next) => {
+  config.env === 'development'
+    ? console.log('globalErrorHandler ~~', error)
+    : errorlogger.error('globalErrorHandler ~~', error)
+
+  let stasusCode = 400
   let message = 'sumething went wrong'
   let errorMessage: IGenericErrorMessage[] = []
 
