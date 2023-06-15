@@ -3,21 +3,11 @@ import {
   IAcademicSemester,
   AcademicSemesterModel,
 } from './academicSemester.interface';
-
-const Months = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
-];
+import {
+  academicSemesterCode,
+  academicSemesterMonth,
+  academicSemesterTitles,
+} from './acadeicSemester.conostant';
 
 // 2. Create a Schema corresponding to the document interface.
 const academicSemester = new Schema<IAcademicSemester>(
@@ -25,7 +15,7 @@ const academicSemester = new Schema<IAcademicSemester>(
     title: {
       type: String,
       required: true,
-      enum: ['Autum', 'Summer', 'Fall'],
+      enum: academicSemesterTitles,
     },
     year: {
       type: Number,
@@ -34,17 +24,17 @@ const academicSemester = new Schema<IAcademicSemester>(
     code: {
       type: String,
       required: true,
-      enum: ['01', '02', '03'],
+      enum: academicSemesterCode,
     },
     startMonth: {
       type: String,
       required: true,
-      enum: Months,
+      enum: academicSemesterMonth,
     },
     endMonth: {
       type: String,
       required: true,
-      enum: Months,
+      enum: academicSemesterMonth,
     },
   },
   {

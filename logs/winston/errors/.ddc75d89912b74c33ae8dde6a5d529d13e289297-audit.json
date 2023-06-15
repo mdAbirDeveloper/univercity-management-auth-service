@@ -79,6 +79,16 @@
             "date": 1686632159517,
             "name": "E:\\level-2 course\\univercity-management-auth-service\\logs\\winston\\errors\\phu-2023-13-06-10-error.log",
             "hash": "4257103b470b16d017440b5333ecb6003e7d62cbbdcdb94cbdde454a4213071b"
+        },
+        {
+            "date": 1686632439977,
+            "name": "E:\\level-2 course\\univercity-management-auth-service\\logs\\winston\\errors\\phu-2023-13-06-11-error.log",
+            "hash": "8d84581222a5f0025b99da065d51dd780c84b5d4a0fc4cbc09e874cbcd1b0e37"
+        },
+        {
+            "date": 1686749161166,
+            "name": "E:\\level-2 course\\univercity-management-auth-service\\logs\\winston\\errors\\phu-2023-14-06-19-error.log",
+            "hash": "d531af2753924983e48ea06e733ff788e789621b215c835d906aec9d2d455621"
         }
     ],
     "hashType": "sha256"
