@@ -8,9 +8,11 @@ import {
   academicSemesterMonth,
   academicSemesterTitles,
 } from './acadeicSemester.conostant';
+import ApiError from '../../../errors/ApiError';
+import httpStatus from 'http-status';
 
 // 2. Create a Schema corresponding to the document interface.
-const academicSemester = new Schema<IAcademicSemester>(
+const academicSemesterSchema = new Schema<IAcademicSemester>(
   {
     title: {
       type: String,
@@ -42,7 +44,22 @@ const academicSemester = new Schema<IAcademicSemester>(
   }
 );
 
-export const User = model<IAcademicSemester, AcademicSemesterModel>(
-  'academicSemester',
-  academicSemester
+academicSemesterSchema.pre('save', async function (next) {
+  const isExist = await AcademicSemester.findOne({
+    title: this.title,
+    year: this.year,
+  });
+  if (isExist) {
+    throw new ApiError(
+      httpStatus.CONFLICT,
+      'Acadamic semester is already exist !'
+    );
+  }
+  next();
+});
+
+export const AcademicSemester = model<IAcademicSemester, AcademicSemesterModel>(
+  'academicSemesterSchema',
+  academicSemesterSchema
 );
+//Handiling same year and same semester issue

@@ -48,7 +48,7 @@ const globalErrorHandler: ErrorRequestHandler = (error, req, res, next) => {
         ]
       : [];
   }
-  next();
+  // next();
   res.status(stasusCode).json({
     success: false,
     message,
