@@ -8,8 +8,8 @@ const router = express.Router();
 
 router.post(
   '/create-semester',
-  validateRequest(AcademicSemesterValidation.createAcademicSemesterZodSchema),
+  // validateRequest(AcademicSemesterValidation.createAcademicSemesterZodSchema),
   AcademicSemesterController.createSemester
 );
 
-export const AcademicSemestreRoutes = { router };
+export const AcademicSemestreRoutes = router;

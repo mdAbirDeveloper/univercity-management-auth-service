@@ -48,12 +48,12 @@ const globalErrorHandler: ErrorRequestHandler = (error, req, res, next) => {
         ]
       : [];
   }
-  // next();
   res.status(stasusCode).json({
     success: false,
     message,
     errorMessage,
     stack: config.env !== 'production' ? error?.stack : undefined,
   });
+  next();
 };
 export default globalErrorHandler;

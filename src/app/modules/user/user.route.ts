@@ -3,7 +3,7 @@ import { UserControlar } from './user.controlar';
 import { UserValidation } from './user.validation';
 import validateRequest from '../../middlewares/validateRequest';
 
-const router = express.Router();
+const router = express();
 
 router.post(
   '/create-user',

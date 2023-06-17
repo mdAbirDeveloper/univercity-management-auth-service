@@ -7,11 +7,11 @@ import { AcademicSemester } from './academicSemesterMode';
 const createSemester = async (
   payload: IAcademicSemester
 ): Promise<IAcademicSemester> => {
-  const result = await AcademicSemester.create(payload);
-
   if (academicSemesterTitleCodeMaper[payload.title] !== payload.code) {
     throw new ApiError(httpStatus.BAD_REQUEST, 'Invalid semester code');
   }
+  const result = await AcademicSemester.create(payload);
+  console.log('from service ', result);
   return result;
 };
 
